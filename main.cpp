@@ -4,10 +4,11 @@
 #include <random>
 #include <algorithm>
 #include <thread>
+#include <iomanip>
 
 int main() {
 	size_t num_elements = (2ull * 1024 * 1024 * 1024) / sizeof(int); // 2GB
-	std::cout << "Allocating " << num_elements << " ints (" << num_elements * sizeof(int) / (1024 * 1024) << " MB)..." << std::endl;
+	std::cout << "\nAllocating " << num_elements << " ints (" << num_elements * sizeof(int) / (1024 * 1024) << " MB)...\n";
 
 	std::vector<int> data(num_elements);
 
@@ -32,11 +33,12 @@ int main() {
 	std::chrono::duration<double> time_seq = end_seq - start_seq;
 	std::chrono::duration<double> time_rand = end_rand - start_rand;
 
-	std::cout << "Sequential write time: " << time_seq.count() << " seconds" << std::endl;
-	std::cout << "Random read time: " << time_rand.count() << " seconds" << std::endl;
-	std::cout << "Sum (ignore): " << sum << std::endl;
+	std::cout << std::left << std::setw(25) << "Sequential write time:" 
+		<< std::right << std::setw(10) << time_seq.count() << " seconds\n";
+	std::cout << std::left << std::setw(25) << "Random read time:"     
+		<< std::right << std::setw(10) << time_rand.count() << " seconds\n\n";
 
-	std::cout << "Sleeping for 30 seconds for system analysis..." << std::endl;
+	std::cout << "Sleeping for 30 seconds for system analysis...\n";
 	std::this_thread::sleep_for(std::chrono::seconds(30));
 
 	return 0;
