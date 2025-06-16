@@ -21,8 +21,9 @@ This project lets you observe this behavior in practice by allocating a large ar
 
 ```
 Allocating 536870912 ints (2048 MB)...
-Sequential write time:        1.09423 seconds
-Random read time:            15.26109 seconds
+
+Sequential write time:      1.62199 seconds
+Random read time:           19.4535 seconds
 
 Sleeping for 30 seconds for system analysis...
 ```
